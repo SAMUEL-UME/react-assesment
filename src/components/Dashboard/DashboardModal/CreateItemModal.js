@@ -51,13 +51,13 @@ function CreateItemModal({ open,  setOpen}) {
 		createItem(formData);
 
 	  // Reset 
-		handleClose();
 		setFormData({ name: "", description: "" });
 		setErrors({});
 	};
 
 	const handleClose = () => {
 		setOpen(false);
+		setFormData({ name: "", description: "" });
 		setErrors({});
 	}
 
