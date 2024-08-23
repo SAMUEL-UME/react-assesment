@@ -36,7 +36,7 @@ function ItemsList({ items, editItem, handleOpen }) {
 						.map((item) => (
 							<li key={item.id}>
 								<Divider />
-								<div className="w-full flex flex-col  justify-between items-baseline gap-4 rounded-md pt-2">
+								<div className="w-full flex flex-col  justify-between items-baseline gap-4 rounded-md pt-2 animate__animated animate__fadeIn">
 									<div className="w-full flex flex-col md:flex-row gap-2">
 										<h3 className="text-black md:w-4/12 text-xl font-medium">
 											{item.name}

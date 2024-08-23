@@ -16,7 +16,7 @@ function Dashboard() {
 	});
 
 	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	
 
 	
 
@@ -29,7 +29,7 @@ function Dashboard() {
 		<div className="min-h-screen max-h-fit w-full bg-blue-50  flex relative justify-end">
 			<DashboardSidebar />
 			<main className="w-full h-fit lg:w-10/12 px-6 lg:px-8 py-8  overflow-y-scroll overflow-x-visible">
-				<CreateItemModal handleClose={handleClose} open={open} />
+				<CreateItemModal setOpen={setOpen} open={open} />
 				<ItemsList
 					items={items}
 					editItem={editItem}

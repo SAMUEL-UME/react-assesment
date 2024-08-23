@@ -18,7 +18,7 @@ function DashboardSidebar() {
 				<span className="absolute top-1 left-8 bg-dark -z-20  w-8 h-8 block"></span>
 			</div>
 			<div
-				className={`${menu} fixed h-screen  z-20 ease-in-out transition-all duration-500 delay-200 w-[18rem] lg:top-0 lg:left-0  lg:w-2/12 bg-dark`}
+				className={`${menu} fixed h-screen  z-20 ease-in-out transition-all duration-500 delay-200 w-[18rem] lg:top-0 lg:left-0  lg:w-2/12 bg-dark animate__animated animate__backInLeft`}
 			>
 				<div className="w-[80vw] h-[100vh] pl-8 z-50 mt-10">
 					<h4 className="text-4xl font-extrabold text-white">Itmer</h4>

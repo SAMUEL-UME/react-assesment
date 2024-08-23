@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Home from "./pages/Home"
 import PageNotFound from "./pages/PageNotFound";
+import "animate.css";
 
 function App() {
   return (

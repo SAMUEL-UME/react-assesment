@@ -1,16 +1,33 @@
 import React from "react";
-import heroPng from "../../assets/hero.png";
+import heroBg from "../../assets/hero.jpg";
+
 function LandingPage() {
 	return (
-		<div className="flex flex-col justify-around max-h-screen overflow-hidden md:overflow-auto items-center lg:justify-between md:max-h-fit min-h-screen bg-white ">
-			<div className="grid grid-cols-1 md:grid-cols-2 px-3 md:px-8 items-start pt-6">
-				<h1 className="font-bold text-[3rem] text-dark leading-relaxed md:text-[3.4rem] md:leading-[4.5rem] md:font-extrabold lg:text-[3.6rem] ">
+		<div
+			className="fixed top-0 z-20 flex flex-col justify-around max-h-[90vh] overflow-hidden md:overflow-auto items-center lg:justify-between md:max-h-fit min-h-screen bg-white bg-gradient-to-r from-black to-slate-800"
+			style={{
+				backgroundImage: `linear-gradient(
+					rgba(0, 0, 0, 0.7), 
+					rgba(0, 0, 0, 0.4)
+				), url(${heroBg})`,
+				backgroundPosition: "center",
+				objectPosition: "center",
+				objectFit: "contain",
+				backgroundSize: "cover",
+				backgroundRepeat: "no-repeat",
+			}}
+		>
+			<div className="w-full h-screen flex flex-col justify-center items-center px-3 md:px-8  pt-6">
+				<h1 className="font-bold text-[3rem] text-white leading-relaxed md:text-[3.4rem] md:leading-[4.5rem] md:font-extrabold lg:text-[3.6rem] animate__animated animate__fadeInDownBig">
 					Just that simple
 				</h1>
-				<div>
-					<p className="text-lg font-light text-dark md:text-xl md:font-normal leading-9 mb-7 md:mb-10">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus in
-						libero risus semper habitant arcu eget.
+				<div className="flex flex-col justify-center items-center">
+					<p className="text-xs font-light w-full md:w-3/4 text-center m-auto text-white md:text-xl md:font-normal leading-9 mb-7 md:mb-10 animate__animated animate__fadeIn">
+						Explore our amazing collection of items and discover what we have to
+						offer. Our hero section showcases the best features of our
+						application, giving you a glimpse of what’s possible. Dive into the
+						content, explore the options, and see how we can make your
+						experience exceptional. 
 					</p>
 					<a
 						href="/Dashboard"
@@ -19,9 +36,6 @@ function LandingPage() {
 						Get Started
 					</a>
 				</div>
-			</div>
-			<div className="w-11/12 hidden md:block  max-h-[600px] lg:max-h-[450px] overflow-hidden mx-auto mt-10">
-				<img src={heroPng} alt="hero" className="object-contain" />
 			</div>
 		</div>
 	);

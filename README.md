@@ -72,7 +72,7 @@ cd react-mirage-crud-auth
 ```bash
 ├── src
 |   |── assets
-│   │   └──hero.png
+│   │   └──hero.jpg
 │   ├── components
 │   │   ├── ButtonComp
 │   │   │   └── Button.js
@@ -111,6 +111,15 @@ cd react-mirage-crud-auth
 │   ├── index.js
 │   └── README.md
 ```
+
+## Usage
+
+### 1. **Login**
+- Use the following credentials to log in:
+  - Email: `test@example.com`
+  - Password: `password123`
+
+
 
 ## Features Explained
 

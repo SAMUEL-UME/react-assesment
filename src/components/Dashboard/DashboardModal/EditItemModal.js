@@ -58,6 +58,7 @@ function EditItemModal({
 
 	const handleClose = () => {
 		setIsEditing(false);
+		setErrors({});
 	};
 
 	return (
@@ -101,11 +102,11 @@ function EditItemModal({
 								Edit
 							</ButtonWrapper>
 							<ButtonWrapper
-								type="button"
+							   type="submit"
 								size="medium"
 								variant="outlined"
 								color="error"
-								onClick={handleChange}
+								onClick={handleClose}
 							>
 								Cancel
 							</ButtonWrapper>
@@ -118,3 +119,7 @@ function EditItemModal({
 }
 
 export default EditItemModal;
+
+
+
+// Fixed Modal Errors (clear errors state on exits) and added 

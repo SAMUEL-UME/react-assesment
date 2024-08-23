@@ -6,7 +6,7 @@ import TextAreaField from "../../FormFields/TextAreaField";
 import { Box, Modal } from "@mui/material";
 import { validateDescription, validateName } from "../../../utils/validation";
 
-function CreateItemModal({ open, handleClose }) {
+function CreateItemModal({ open,  setOpen}) {
 	const { createItem } = useContext(ItemsContext);
 	const [errors, setErrors] = useState({});
 	const [formData, setFormData] = useState({
@@ -55,6 +55,11 @@ function CreateItemModal({ open, handleClose }) {
 		setFormData({ name: "", description: "" });
 		setErrors({});
 	};
+
+	const handleClose = () => {
+		setOpen(false);
+		setErrors({});
+	}
 
 	return (
 		<div>

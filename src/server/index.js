@@ -15,12 +15,19 @@ export function makeServer() {
 			} else {
 				// If no localStorage data, seed the default data
 				server.create("item", {
-					name: "Item 1",
-					description: "This is item 1",
+					name: "Eco-Friendly Bamboo Toothbrush",
+					description:
+						"This bamboo toothbrush is a sustainable alternative to traditional plastic toothbrushes. With a biodegradable handle and soft, BPA-free bristles, it offers gentle yet effective cleaning for your teeth. The minimalist design makes it a perfect fit for eco-conscious individuals looking to reduce plastic waste.",
 				});
 				server.create("item", {
-					name: "Item 2",
-					description: "This is item 2",
+					name: "Smart Water Bottle",
+					description:
+						"Stay hydrated and track your daily water intake with this smart water bottle. Equipped with a Bluetooth sensor and an LED reminder, it syncs with your smartphone to monitor hydration levels and sends gentle reminders to drink more water throughout the day. Its sleek, insulated design keeps your drink cold for 24 hours and hot for 12 hours.",
+				});
+				server.create("item", {
+					name: "Wireless Noise-Cancelling Earbuds",
+					description:
+						" Immerse yourself in high-quality sound with these wireless noise-cancelling earbuds. Designed for comfort and convenience, they offer up to 8 hours of battery life on a single charge and come with a compact charging case for extended playtime. Whether you're on a call or listening to music, the active noise cancellation helps block out distractions.",
 				});
 			}
 			//seed data for user
