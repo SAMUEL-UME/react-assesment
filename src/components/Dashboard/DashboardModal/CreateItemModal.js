@@ -51,6 +51,7 @@ function CreateItemModal({ open,  setOpen}) {
 		createItem(formData);
 
 	  // Reset 
+	    handleClose()
 		setFormData({ name: "", description: "" });
 		setErrors({});
 	};
