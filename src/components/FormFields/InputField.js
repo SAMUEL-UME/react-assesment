@@ -20,7 +20,7 @@ const InputField = ({
 		medium: "px-4 py-2 text-base",
 		large: "px-6 py-3 text-lg ",
 	};
-	console.log(errors)
+
 	return (
 		<div className="flex flex-col pb-2">
 			<label htmlFor={id} className="text-sm lg:text-lg text-[#141414] mb-1">
@@ -32,12 +32,12 @@ const InputField = ({
 				name={id}
 				label={placeholder}
 				autoComplete={id}
-				{...props}
 				className={` ${sizeStyles[size]} ${className} `}
 				value={value}
 				onChange={onChange}
+				{...props}
 			/>
-			{errors[id] && <p className="text-red-500">{errors[id]}</p>}
+			{errors && <p className="text-red-500">{errors}</p>}
 		</div>
 	);
 };

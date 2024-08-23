@@ -6,8 +6,12 @@ import TextareaField from "../../FormFields/TextAreaField";
 import { Box, Modal } from "@mui/material";
 import { validateDescription, validateName } from "../../../utils/validation";
 
-function EditItemModal
-({ currentItem, setCurrentItem, isEditing, setIsEditing }) {
+function EditItemModal({
+	currentItem,
+	setCurrentItem,
+	isEditing,
+	setIsEditing,
+}) {
 	const { updateItem } = useContext(ItemsContext);
 	const [errors, setErrors] = useState({});
 
@@ -33,16 +37,21 @@ function EditItemModal
 		});
 	};
 
-	const handleEditSubmit = () => {
+	const handleEditSubmit = (e) => {
+		e.preventDefault();
+
 		const { id, name, description } = currentItem;
 		//validate form fields
 		const nameError = validateName(name);
 		const descriptionError = validateDescription(description);
-		if (nameError || descriptionError)
-			return setErrors({ name: nameError, description: descriptionError });
-
+		if (nameError || descriptionError) {
+			setErrors({ name: nameError, description: descriptionError });
+			return;
+		}
 		//proceed if validations are successful
 		updateItem(id, { name, description });
+
+		//reset modal and item state
 		setIsEditing(!isEditing);
 		setCurrentItem({ id: null, name: "", description: "" });
 	};
@@ -58,10 +67,7 @@ function EditItemModal
 				onClose={handleClose}
 				aria-labelledby="modal-modal-title"
 			>
-				<Box
-					sx={style}
-					className="shadow shadow-gray-300"
-				>
+				<Box sx={style} className="shadow shadow-gray-300">
 					<h2
 						id="modal-modal-title"
 						className="text-4xl font-semibold text-[#1976d2] pb-5 text-center"
@@ -76,14 +82,14 @@ function EditItemModal
 							size={"medium"}
 							value={currentItem.name}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.name}
 						/>
 						<TextareaField
 							id="description"
 							label="Description"
 							value={currentItem.description}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.description}
 						/>
 						<div className="flex py-3 gap-3">
 							<ButtonWrapper
@@ -95,7 +101,7 @@ function EditItemModal
 								Edit
 							</ButtonWrapper>
 							<ButtonWrapper
-								type="submit"
+								type="button"
 								size="medium"
 								variant="outlined"
 								color="error"
@@ -111,5 +117,4 @@ function EditItemModal
 	);
 }
 
-export default EditItemModal
-;
+export default EditItemModal;

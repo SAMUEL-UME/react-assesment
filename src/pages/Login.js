@@ -11,37 +11,51 @@ import Navbar from "../components/Navbar/Navbar";
 function Login() {
 	const { login, isAuthenticated } = useContext(AuthContext);
 	const [errors, setErrors] = useState({});
-
-	const navigate = useNavigate();
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-	});
+	const [formData, setFormData] = useState({ email: "", password: "" });
 	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
-	//Checks id user is already authenticated
+	// Check if the user is already authenticated
 	useEffect(() => {
 		if (isAuthenticated) navigate("/dashboard");
 	}, [isAuthenticated, navigate]);
 
+	// Handle input field changes
 	const handleChange = (e) => {
-		const formField = e.target.id;
-		setFormData({ ...formData, [formField]: e.target.value });
+		const { id, value } = e.target;
+		setFormData((prevData) => ({ ...prevData, [id]: value }));
 	};
 
+	// Handle form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		//validate form fields
+
+		// Validate form fields
 		const emailError = validateEmail(formData.email);
 		const passwordError = validatePassword(formData.password);
-		if (emailError || passwordError)
-			return setErrors({ email: emailError, password: passwordError });
 
+		if (emailError || passwordError) {
+			setErrors({ email: emailError, password: passwordError });
+			return;
+		}
+
+		// Proceed with login if validation is successful
+		setErrors({});
 		setIsLoading(true);
-		const success = await login(formData);
-		if (success) {
+
+		try {
+			const success = await login(formData);
+
+			if (success) {
+				navigate("/dashboard");
+			} else {
+				// Handle login failure
+				setErrors({ general: "Invalid email or password. Please try again." });
+			}
+		} catch (error) {
+			setErrors({ general: "Something went wrong. Please try again." });
+		} finally {
 			setIsLoading(false);
-			navigate("/dashboard");
 		}
 	};
 
@@ -61,6 +75,9 @@ function Login() {
 					<h2 className="text-4xl font-semibold text-[#1976d2] pb-5 text-center">
 						Login
 					</h2>
+					{errors.general && (
+						<p className="text-red-600 text-center">{errors.general}</p>
+					)}
 					<form onSubmit={handleSubmit}>
 						<InputField
 							type="email"
@@ -68,7 +85,7 @@ function Login() {
 							id="email"
 							value={formData.email}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.email}
 						/>
 						<InputField
 							type="password"
@@ -76,16 +93,16 @@ function Login() {
 							id="password"
 							value={formData.password}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.password}
 						/>
 						<Button
-							type={"submit"}
-							size={"large"}
-							variant={"contained"}
-							fullWidth={true}
+							type="submit"
+							size="large"
+							variant="contained"
+							fullWidth
 						>
 							{isLoading ? (
-								<CircularProgress sx={{ color: "#ffffff" }} />
+								<CircularProgress sx={{ color: "#ffffff" }} size={24} />
 							) : (
 								"Login"
 							)}

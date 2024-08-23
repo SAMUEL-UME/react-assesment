@@ -28,7 +28,7 @@ function DashboardSidebar() {
 								<a href="/">Home</a>
 							</li>
 							<li>
-								<a href="/">About</a>
+								<a href="/Dashboard">Profile</a>
 							</li>
 						</ul>
 						<ButtonWrapper

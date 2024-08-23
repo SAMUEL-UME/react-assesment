@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# React.js Authentication and CRUD Application with MirageJS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Overview
 
-## Available Scripts
+This is a simple React.js application demonstrating user authentication and basic CRUD (Create, Read, Update, Delete) operations. The application uses MirageJS to simulate a backend API, React Context for global state management, and functional components.[visit github](https://github.com/samuel-ume).
 
-In the project directory, you can run:
+## Features:
 
-### `npm start`
+1. ### User Authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication**: Log in with an email and password. The dashboard is only accessible to authenticated users.
+- Login functionality with email and password.
+- Validation and error handling for incorrect credentials.
+- Simple session management using localStorage to persist authentication state.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. ### CRUD Operations:
 
-### `npm test`
+- Display a list of items on the dashboard.
+- Create new items, update existing items, delete items, and view details of individual items.
+- Form validation for creating and updating items.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+3. ### Search Functionality:
+- Search for items by name or description.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. ### Error Handling:
+- Custom ErrorBoundary component to catch unexpected errors and prevent the app from crashing.
+- Error handling for network requests, form validation errors, and empty states.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Technologies Used
+- **React**: Frontend framework for building user interfaces.
+- **MirageJS**: API mocking library that enables the simulation of a backend without writing actual server-side code.
+- **MUI**: Styling and creating custom component to increase user interaction
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
+Make sure you have the following installed on your machine:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js (v12.x or higher)
+- npm (comes with Node.js) or yarn
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Clone the repository:**
+```bash
+   git clone https://github.com/your-username/react-mirage-crud-auth.git
+```
+2. **Navigate to the project directory:**
+```bash
+cd react-mirage-crud-auth
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#. **Install dependencies**
+```bash
+ npm insatll 
+   or 
+ yarn install
+```
+2. **Running the application**
+```bash
+ npm insatll 
+   or 
+ yarn install
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project structure
+```bash
+├── src
+|   |── assets
+│   │   └──hero.png
+│   ├── components
+│   │   ├── ButtonComp
+│   │   │   └── Button.js
+│   │   ├── Dashboard
+│   │   │   ├── DashboardModal.js
+│   │   │   │    ├── CreateItemModal.js
+│   │   │   │    ├── DeleteItemModal.js
+│   │   │   │    └── EditItemModal.js
+│   │   │   └── ItemList.js
+│   │   ├── FormFiels
+│   │   │   ├── InputField.js
+│   │   │   └── TextAreaField.js
+│   │   ├── LandingPage
+│   │   │   └── LandingPage.js
+│   │   ├── Navbar
+│   │   │   ├── DashboardSidebar
+│   │   │   │    └── DashboardSidebar.js
+│   │   │   └── Navbar.js
+│   │   ├── ErrorBoundary.js
+│   │   └── Search.js
+│   ├── context
+│   │   ├──  AuthContext.js
+│   │   └──  ItemContext.js
+│   ├── pages
+│   │   ├── Dashboard.js
+│   │   ├── Home.js
+│   │   ├── Login.js
+│   │   └── PageNotFound.js
+│   ├── server
+│   │   └── server.js
+│   ├── utils
+│   │   └── validation.js
+│   ├── App.js
+│   ├── index.css
+│   ├── index.js
+│   └── README.md
+```
 
-### Analyzing the Bundle Size
+## Features Explained
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1.  **Authentication**
+- **Login Component:** Users can log in using email and password. The authentication state is persisted using localStorage. If credentials are incorrect, an error message is displayed.
 
-### Making a Progressive Web App
+### 2.  **CRUD Operations**
+- **Dashboard Component:** Displays a list of items fetched from MirageJS. Users can add, edit, delete, and view details of each item. Validation is enforced on form submissions, ensuring all required fields are filled.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3.  **Error Handling**
+- **ErrorBoundary Component:** Wraps the entire application or specific components to catch and display a fallback UI in case of unexpected errors. The ErrorBoundary prevents the app from crashing on uncaught errors.
 
-### Advanced Configuration
+### 4. **Search Functionality**
+- **Search Component:**  Allows users to filter the items displayed on the dashboard based on a search query.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+###  Technologies Used
+- React.js: Front-end library for building user interfaces.
+- MirageJS: Mock server to handle API requests during development.
+- React Context API: Global state management for user authentication.
+- LocalStorage: Persisting user session state.
+- Axios: For making HTTP requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License. See the *LICENSE* file for details.
+##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

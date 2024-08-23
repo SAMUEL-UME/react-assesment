@@ -16,8 +16,8 @@ const ItemsProvider = ({ children }) => {
   useEffect(() => {
     fetchItems();
   }, []);
-
   const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
 
   const createItem = async (item) => {
     await axios.post("/api/items", item);
@@ -35,7 +35,7 @@ const ItemsProvider = ({ children }) => {
   };
 
   return (
-    <ItemsContext.Provider value={{ items: filteredItems, createItem, updateItem, deleteItem, searchQuery, setSearchQuery }}>
+    <ItemsContext.Provider value={{ items: filteredItems, createItem,  updateItem, deleteItem, searchQuery, setSearchQuery }}>
       {children}
     </ItemsContext.Provider>
   );

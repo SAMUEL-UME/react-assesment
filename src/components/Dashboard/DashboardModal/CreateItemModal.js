@@ -26,8 +26,11 @@ function CreateItemModal({ open, handleClose }) {
 	};
 
 	const handleChange = (e) => {
-		const formField = e.target.id;
-		setFormData({ ...formData, [formField]: e.target.value });
+		const { id, value } = e.target;
+		setFormData((prevData) => ({
+			...prevData,
+			[id]: value,
+		}));
 	};
 
 	const handleSubmit = (e) => {
@@ -35,12 +38,22 @@ function CreateItemModal({ open, handleClose }) {
 		//validate form fields
 		const nameError = validateName(formData.name);
 		const descriptionError = validateDescription(formData.description);
-		if (nameError || descriptionError)
-			return setErrors({ name: nameError, description: descriptionError });
 
+		// Set errors if validation fails
+		if (nameError || descriptionError) {
+			setErrors({
+				name: nameError,
+				description: descriptionError,
+			});
+			return;
+		}
+		//proceed with item creation is validation is successful
 		createItem(formData);
+
+	  // Reset 
 		handleClose();
 		setFormData({ name: "", description: "" });
+		setErrors({});
 	};
 
 	return (
@@ -48,11 +61,11 @@ function CreateItemModal({ open, handleClose }) {
 			<Modal
 				open={open}
 				onClose={handleClose}
-				aria-labelledby="modal-modal-title"
+				aria-labelledby="create-item-modal-title"
 			>
 				<Box sx={style} className="shadow-lg shadow-white rounded-lg">
 					<h2
-						id="modal-modal-title"
+						id="create-item-modal-title"
 						className="text-4xl font-semibold text-[#1976d2] pb-5 text-center"
 					>
 						Create Item
@@ -65,17 +78,16 @@ function CreateItemModal({ open, handleClose }) {
 							size={"medium"}
 							value={formData.name}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.name}
 						/>
 						<TextAreaField
 							id="description"
 							label="Description"
 							value={formData.description}
 							onChange={handleChange}
-							errors={errors}
+							errors={errors.description}
 						/>
 						<ButtonWrapper type="submit" size="large" variant="contained">
-							{" "}
 							Create Item
 						</ButtonWrapper>
 					</form>

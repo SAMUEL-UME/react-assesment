@@ -16,7 +16,7 @@ function TextAreaField({ label, id, value, onChange, errors }) {
 				onChange={onChange}
 				autoComplete={id}
 			/>
-			{errors.description && <p className="text-red-500">{errors.description}</p>}
+			{errors && <p className="text-red-500">{errors}</p>}
 		</div>
 	);
 }

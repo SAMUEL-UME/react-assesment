@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
 	const login = async (email, password) => {
 		try {
 			const response = await axios.post("/api/login", { email, password });
-			console.log(response.status);
 			if (response.status === 201) {
 				setIsAuthenticated(true);
 				addAuthStateToLoacalstorage(true);

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { ItemsContext } from "../context/ItemsContext";
-import DashboardItems from "../components/Dashboard/DashboardItems";
-import DashboardSidebar from "../components/Navbar/DashboardSidebar/DashboardSidebar";
+import DashboardSidebar from "../components/Navbar/DashboardBar/DashboardSidebar";
 import CreateItemModal from "../components/Dashboard/DashboardModal/CreateItemModal";
 import EditItemModal from "../components/Dashboard/DashboardModal/EditItemModal";
+import ItemsList from "../components/Dashboard/ItemsList";
 
 function Dashboard() {
 	const { items } = useContext(ItemsContext);
@@ -20,8 +20,8 @@ function Dashboard() {
 
 	
 
-	const editItem = () => {
-		setCurrentItem(...items);
+	const editItem = (item) => {
+		setCurrentItem(item);
 		setIsEditing(true);
 	};
 
@@ -30,12 +30,11 @@ function Dashboard() {
 			<DashboardSidebar />
 			<main className="w-full h-fit lg:w-10/12 px-6 lg:px-8 py-8  overflow-y-scroll overflow-x-visible">
 				<CreateItemModal handleClose={handleClose} open={open} />
-				<DashboardItems
+				<ItemsList
 					items={items}
 					editItem={editItem}
 					handleOpen={handleOpen}
 				/>
-
 				<EditItemModal
 					currentItem={currentItem}
 					setCurrentItem={setCurrentItem}
