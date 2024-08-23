@@ -37,7 +37,7 @@ const InputField = ({
 				onChange={onChange}
 				{...props}
 			/>
-			{errors && <p className="text-red-500">{errors}</p>}
+			{errors && <p className="text-red-500 text-xs">{errors}</p>}
 		</div>
 	);
 };

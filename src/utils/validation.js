@@ -37,3 +37,9 @@ export const validateName = (name) => {
     return null;
   };
   
+  // Check if item name exists in items list
+	export const checkIfItemNameExists = (name, items) => {
+		const lowerCasedName = name.toLowerCase();
+		const isNameTaken = items.some((item) => item.name.toLowerCase() === lowerCasedName);
+		return isNameTaken ? `An item with the name "${name}" already exists.` : null;
+	};

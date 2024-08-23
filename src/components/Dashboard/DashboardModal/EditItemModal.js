@@ -4,7 +4,11 @@ import InputField from "../../FormFields/InputField";
 import ButtonWrapper from "../../ButtonsComp/Button";
 import TextareaField from "../../FormFields/TextAreaField";
 import { Box, Modal } from "@mui/material";
-import { validateDescription, validateName } from "../../../utils/validation";
+import {
+	checkIfItemNameExists,
+	validateDescription,
+	validateName,
+} from "../../../utils/validation";
 
 function EditItemModal({
 	currentItem,
@@ -12,7 +16,7 @@ function EditItemModal({
 	isEditing,
 	setIsEditing,
 }) {
-	const { updateItem } = useContext(ItemsContext);
+	const { updateItem, items } = useContext(ItemsContext);
 	const [errors, setErrors] = useState({});
 
 	///Custom style
@@ -44,8 +48,15 @@ function EditItemModal({
 		//validate form fields
 		const nameError = validateName(name);
 		const descriptionError = validateDescription(description);
-		if (nameError || descriptionError) {
-			setErrors({ name: nameError, description: descriptionError });
+
+		// Check for existing item name
+		const existingItemError = checkIfItemNameExists(name, items);
+
+		if (nameError || descriptionError || existingItemError) {
+			setErrors({
+				name: nameError || existingItemError,
+				description: descriptionError,
+			});
 			return;
 		}
 		//proceed if validations are successful
@@ -102,7 +113,7 @@ function EditItemModal({
 								Edit
 							</ButtonWrapper>
 							<ButtonWrapper
-							   type="submit"
+								type="submit"
 								size="medium"
 								variant="outlined"
 								color="error"
@@ -119,6 +130,3 @@ function EditItemModal({
 }
 
 export default EditItemModal;
-
-
-

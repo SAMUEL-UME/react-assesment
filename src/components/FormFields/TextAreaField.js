@@ -2,7 +2,7 @@ import React from "react";
 
 function TextAreaField({ label, id, value, onChange, errors }) {
 	return (
-		<div className="md:col-span-2">
+		<div className="md:col-span-2 mb-3">
 			<label htmlFor={id} className="text-sm lg:text-lg text-[#141414]  mb-1">
 				{label}
 			</label>
@@ -16,7 +16,7 @@ function TextAreaField({ label, id, value, onChange, errors }) {
 				onChange={onChange}
 				autoComplete={id}
 			/>
-			{errors && <p className="text-red-500">{errors}</p>}
+			{errors && <p className="text-red-500 text-xs">{errors}</p>}
 		</div>
 	);
 }

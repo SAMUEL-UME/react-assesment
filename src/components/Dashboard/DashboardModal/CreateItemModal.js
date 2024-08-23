@@ -4,10 +4,10 @@ import ButtonWrapper from "../../ButtonsComp/Button";
 import InputField from "../../FormFields/InputField";
 import TextAreaField from "../../FormFields/TextAreaField";
 import { Box, Modal } from "@mui/material";
-import { validateDescription, validateName } from "../../../utils/validation";
+import { checkIfItemNameExists, validateDescription, validateName } from "../../../utils/validation";
 
 function CreateItemModal({ open,  setOpen}) {
-	const { createItem } = useContext(ItemsContext);
+	const { createItem, items } = useContext(ItemsContext);
 	const [errors, setErrors] = useState({});
 	const [formData, setFormData] = useState({
 		name: "",
@@ -38,11 +38,14 @@ function CreateItemModal({ open,  setOpen}) {
 		//validate form fields
 		const nameError = validateName(formData.name);
 		const descriptionError = validateDescription(formData.description);
+		
+		// Check for existing item name
+		const existingItemError = checkIfItemNameExists(formData.name, items);
 
 		// Set errors if validation fails
-		if (nameError || descriptionError) {
+		if (nameError || descriptionError || existingItemError) {
 			setErrors({
-				name: nameError,
+				name: nameError || existingItemError,
 				description: descriptionError,
 			});
 			return;
