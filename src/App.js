@@ -8,9 +8,11 @@ import Login from "./pages/Login";
 import Home from "./pages/Home"
 import PageNotFound from "./pages/PageNotFound";
 import "animate.css";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
+    <ErrorBoundary>
     <AuthProvider>
       <ItemsProvider>
         <Router>
@@ -23,6 +25,7 @@ function App() {
         </Router>
       </ItemsProvider>
     </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
