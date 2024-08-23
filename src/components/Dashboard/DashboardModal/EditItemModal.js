@@ -50,7 +50,10 @@ function EditItemModal({
 		const descriptionError = validateDescription(description);
 
 		// Check for existing item name
-		const existingItemError = checkIfItemNameExists(name, items);
+		let existingItemError = null;
+		if (name !== items.find((item) => item.id === id).name) {
+			existingItemError = checkIfItemNameExists(name, items, id);
+		}
 
 		if (nameError || descriptionError || existingItemError) {
 			setErrors({
