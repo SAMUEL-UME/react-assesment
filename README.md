@@ -89,6 +89,7 @@ cd react-mirage-crud-auth
 │   │   │   └── LandingPage.js
 │   │   ├── Navbar
 │   │   │   ├── DashboardSidebar
+│   │   │   │    ├── DashboardSearchbar.js
 │   │   │   │    └── DashboardSidebar.js
 │   │   │   └── Navbar.js
 │   │   ├── ErrorBoundary.js
